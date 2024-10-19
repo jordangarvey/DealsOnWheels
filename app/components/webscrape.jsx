@@ -7,22 +7,20 @@ function WebScrape() {
 	const [data, setData] = useState();
 
 	function handleScrape() {
-		fetch(`/api/scrape?path=${url}`)
+		fetch(`/api/scrape?url=${url}`)
 		.then(response => response.json())
 		.then(response => {
-			setData(response.html);
+			setData(response.researchData);
 		});
 	}
 
 	return (
 		<div>
-			<input value={url} onChange={(e) => setUrl(e.currentTarget.value)}/>
-			<button onClick={handleScrape}>DEAL</button>
-
-			{
-				data &&
-				<div dangerouslySetInnerHTML={{ __html: data }}/>
-			}
+			<div>
+				<label>Enter a URL here for a car you want to buy</label>
+				<input value={url} onChange={(e) => setUrl(e.currentTarget.value)}/>
+			</div>
+			<button onClick={handleScrape}>Show me the money</button>
 		</div>
 	)
 }

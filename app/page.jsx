@@ -1,6 +1,7 @@
 import Head from "next/head";
 
-import WebScrape from "./controls/webscrape";
+import CarDetails from "./components/cardetails";
+import WebScrape from "./components/webscrape";
 
 import styles from "../styles/Home.module.css";
 
@@ -13,7 +14,8 @@ function Home() {
 
 			<main>
 				<h1 className={styles.title}>Welcome to Deals on Wheels 🚗</h1>
-				<WebScrape/>
+				<CarDetails/>
+				{/* <WebScrape/> */}
 			</main>
 		</div>
 	);

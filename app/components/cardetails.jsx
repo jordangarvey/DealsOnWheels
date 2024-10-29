@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from '@mui/material/Button';
 
 function CarDetails() {
 	const [makeModel, setMakeModel] = useState("");
@@ -18,6 +19,16 @@ function CarDetails() {
 		});
 	}
 
+	function makeCall() {
+		const toNumber = encodeURIComponent("+447803508419");
+
+		fetch(`/api/call?makeModel=${makeModel}&targetPrice=${suggestedData.recommendedHagglePrice}&toNumber=${toNumber}`)
+		.then(response => response.json())
+		.then(response => {
+			console.log("Call response:", response);
+		});
+	}
+
 	return (
 		<div>
 			{suggestedData
@@ -30,6 +41,8 @@ function CarDetails() {
 							<p>{suggestedData.reasoning}</p>
 							<br/><br/>
 							<p>We can even phone the fuckers for you!</p>
+
+							<Button onClick={makeCall}>Call them now!</Button>
 						</div>
 					)
 				)
@@ -56,7 +69,7 @@ function CarDetails() {
 						</div>
 					</div>
 
-					<button onClick={handleResearch}>Show me the money</button>
+					<Button onClick={handleResearch}>Show me the money</Button>
 				</>
 			}
 

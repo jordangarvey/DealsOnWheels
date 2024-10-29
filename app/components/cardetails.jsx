@@ -22,6 +22,8 @@ function CarDetails() {
 	function makeCall() {
 		const toNumber = encodeURIComponent("+447803508419");
 
+		// TODO: this will just make the call, and return the status of that.
+		// We’d need something else to actually get the result of the call, such as a transcript of it.
 		fetch(`/api/call?makeModel=${makeModel}&targetPrice=${suggestedData.recommendedHagglePrice}&toNumber=${toNumber}`)
 		.then(response => response.json())
 		.then(response => {

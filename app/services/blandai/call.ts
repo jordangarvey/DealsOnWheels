@@ -44,19 +44,14 @@ async function makeCall(toNumber: string, carModel: string, targetPrice: string)
 		"calendly": {}
 	};
 
-	try {
-		const response = await axios.post<callResponse>(apiUrl, data, {
-			headers: {
-				"Authorization": apiKey,
-				"Content-Type": "application/json"
-			}
-		});
+	const response = await axios.post<callResponse>(apiUrl, data, {
+		headers: {
+			"Authorization": apiKey,
+			"Content-Type": "application/json"
+		}
+	});
 
-		return response.data;
-	} catch(error) {
-		console.error("Error making the call:", error);
-		throw error;
-	}
+	return response.data;
 }
 
 export {

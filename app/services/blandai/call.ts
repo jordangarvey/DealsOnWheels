@@ -1,6 +1,13 @@
 import axios from "axios";
 
-async function makeCall(toNumber, carModel, targetPrice) {
+type callResponse = {
+	status: "success"
+	call_id?: string;
+} | {
+	status: "error"
+};
+
+async function makeCall(toNumber: string, carModel: string, targetPrice: string) {
 	const apiKey = process.env.BLAND_API_KEY;
 	const apiUrl = "https://us.api.bland.ai/v1/calls";
 
@@ -38,7 +45,7 @@ async function makeCall(toNumber, carModel, targetPrice) {
 	};
 
 	try {
-		const response = await axios.post(apiUrl, data, {
+		const response = await axios.post<callResponse>(apiUrl, data, {
 			headers: {
 				"Authorization": apiKey,
 				"Content-Type": "application/json"

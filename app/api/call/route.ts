@@ -8,9 +8,9 @@ async function GET(req) {
 		const targetPrice = searchParams.get("targetPrice");
 		const toNumber = searchParams.get("toNumber");
 
-		const res = await makeCall(toNumber, makeModel, targetPrice);
+		const callResponse = await makeCall(toNumber, makeModel, targetPrice);
 
-		return new Response(JSON.stringify({ callDetail: res }));
+		return new Response(JSON.stringify(callResponse));
 	} catch(error) {
 		return new Response(JSON.stringify({ error: "Failed to scrape the webpage" }), { status: 500 });
 	}

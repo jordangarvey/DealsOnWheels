@@ -13,8 +13,8 @@ function Home() {
 
 			<main>
 				<h1>Welcome to Deals on Wheels 🚗</h1>
-				<CarDetails/>
-				{/* <WebScrape/> */}
+				{/* <CarDetails/> */}
+				<WebScrape/>
 			</main>
 		</div>
 	);

@@ -40,7 +40,7 @@ async function makeCall(toNumber: string, carModel: string, targetPrice: string)
 		"dynamic_data": [],
 		"analysis_preset": null,
 		"analysis_schema": {},
-		"webhook": null,
+		"webhook": `${process.env.HOSTNAME}/api/webhook/transcript`,
 		"calendly": {}
 	};
 

@@ -6,15 +6,15 @@ async function GET(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const { searchParams } = new URL(req.url);
 
-		const makeModel = searchParams.get("makeModel");
+		const reasons = searchParams.get("reasons");
 		const targetPrice = searchParams.get("targetPrice");
 		const toNumber = searchParams.get("toNumber");
 
-		const callResponse = await makeCall(toNumber, makeModel, targetPrice);
+		const callResponse = await makeCall(toNumber, reasons, targetPrice);
 
-		res.status(200).json(callResponse);
+		return new Response(JSON.stringify(callResponse), { status: 200 });
 	} catch(error) {
-		res.status(500).json({ error: "Failed to scrape the webpage" });
+		return new Response(JSON.stringify({ error: "Failed to start the call" }), { status: 500 });
 	}
 }
 

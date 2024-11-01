@@ -1,6 +1,5 @@
 import Head from "next/head";
 
-import CarDetails from "./components/cardetails";
 import WebScrape from "./components/webscrape";
 
 function Home() {

@@ -7,14 +7,14 @@ type callResponse = {
 	status: "error"
 };
 
-async function makeCall(toNumber: string, carModel: string, targetPrice: string) {
+async function makeCall(toNumber: string, reasons: string, targetPrice: string) {
 	const apiKey = process.env.BLAND_API_KEY;
 	const apiUrl = "https://us.api.bland.ai/v1/calls";
 
 	const data = {
 		"phone_number": toNumber,
 		"from": null,
-		"task": `You are trying to negotiate a price for a car. You must not accept more than ${targetPrice}. The car model is ${carModel}. Be polite but insist that they meet your price. If it doesn’t seem possible then thank them for their time and hang up. If they agree, say that you were be in contact very shortly to make payment and hang up.`,
+		"task": `You are trying to negotiate a price for a car. You must not accept more than ${targetPrice}. Be polite but insist that they meet your price. If it doesn’t seem possible then thank them for their time and hang up. If they agree, say that you were be in contact very shortly to make payment and hang up. You have the following info to help negoiate: ${reasons}`,
 		"model": "turbo",
 		"language": "en",
 		"voice": "Public - DealerEden",
@@ -40,7 +40,7 @@ async function makeCall(toNumber: string, carModel: string, targetPrice: string)
 		"dynamic_data": [],
 		"analysis_preset": null,
 		"analysis_schema": {},
-		"webhook": `${process.env.HOSTNAME}/api/webhook/transcript`,
+		// "webhook": `${process.env.HOSTNAME}/api/webhook/transcript`,
 		"calendly": {}
 	};
 

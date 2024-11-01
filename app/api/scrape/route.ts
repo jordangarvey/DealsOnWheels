@@ -1,8 +1,9 @@
+import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 
 import { getCarPriceRecommendationFromHtml } from "../../services/openai/research";
 
-async function GET(req) {
+async function GET(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const { searchParams } = new URL(req.url);
 		const url = searchParams.get("url");
@@ -10,9 +11,9 @@ async function GET(req) {
 
 		const researchData = await getCarPriceRecommendationFromHtml(html);
 
-		return new Response(JSON.stringify({ researchData: researchData }));
+		res.status(200).json({ researchData: researchData });
 	} catch (error) {
-		return new Response(JSON.stringify({ error: "Failed to scrape the webpage" }), { status: 500 });
+		res.status(500).json({ error: "Failed to scrape the webpage" });
 	}
 }
 

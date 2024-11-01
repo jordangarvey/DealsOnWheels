@@ -1,6 +1,8 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 import { makeCall } from "../../services/blandai/call";
 
-async function GET(req) {
+async function GET(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const { searchParams } = new URL(req.url);
 
@@ -10,9 +12,9 @@ async function GET(req) {
 
 		const callResponse = await makeCall(toNumber, makeModel, targetPrice);
 
-		return new Response(JSON.stringify(callResponse));
+		res.status(200).json(callResponse);
 	} catch(error) {
-		return new Response(JSON.stringify({ error: "Failed to scrape the webpage" }), { status: 500 });
+		res.status(500).json({ error: "Failed to scrape the webpage" });
 	}
 }
 

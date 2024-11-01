@@ -1,4 +1,5 @@
 import { Roboto } from "next/font/google";
+import "shadcdn/dist/shadcdn.css";
 
 import "../styles/global.css";
 

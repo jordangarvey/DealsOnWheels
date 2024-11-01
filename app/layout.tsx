@@ -1,5 +1,4 @@
 import { Roboto } from "next/font/google";
-import { CssBaseline } from '@mui/material';
 
 import "../styles/global.css";
 
@@ -22,7 +21,6 @@ function RootLayout({ children }) {
 			</head>
 
 			<body className={roboto.className}>
-				<CssBaseline/>
 				{children}
 			</body>
 		</html>

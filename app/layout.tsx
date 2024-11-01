@@ -1,5 +1,5 @@
+import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "shadcdn/dist/shadcdn.css";
 
 import "../styles/global.css";
 
@@ -9,12 +9,16 @@ const roboto = Roboto({
 	style: ["normal", "italic"]
 });
 
-export const metadata = {
+export const metadata: Metadata = {
 	title: "Deals on Wheels",
 	description: "Making Deals on Wheels",
 };
 
-function RootLayout({ children }) {
+function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
 	return (
 		<html lang="en">
 			<head>
